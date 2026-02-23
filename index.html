@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lily — Personal Website</title>
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --panel: #121318;
+      --panel-light: #1a1d26;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #60a5fa;
+      --accent-2: #34d399;
+      --purple: #3c1a7a;
+      --purple-dark: #2d1a5b;
+      --purple-light: #4a1d95;
+      --purple-glow: rgba(60, 26, 122, 0.08);
+      --ring: rgba(96, 165, 250, 0.35);
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 80% -10%, #1b1c25 0%, var(--bg) 60%);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    figure { margin: 0; }
+    .wrap {
+      max-width: 1000px; margin: 0 auto; padding: 24px 16px 64px;
+    }
+    header {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 18px;
+    }
+    .brand { font-weight: 700; letter-spacing: 0.2px; }
+    .brand small { color: var(--muted); font-weight: 500; }
+
+    nav {
+      display: flex; gap: 8px; flex-wrap: wrap;
+      background: color-mix(in srgb, var(--panel) 92%, transparent);
+      padding: 6px; border-radius: 999px; position: sticky; top: 8px; z-index: 10;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 0 1px var(--purple-dark), 0 8px 30px rgba(0,0,0,0.35);
+    }
+    .tab-btn {
+      appearance: none; border: 0; cursor: pointer; padding: 10px 14px; border-radius: 999px;
+      color: var(--muted); background: transparent; font-weight: 600; letter-spacing: 0.2px;
+    }
+    .tab-btn[aria-current="page"], .tab-btn:hover { color: var(--text); }
+    .tab-btn[aria-current="page"] {
+      background: linear-gradient(180deg, var(--panel-light), var(--panel));
+      box-shadow: inset 0 0 0 1px var(--purple), 0 0 0 3px var(--purple-glow);
+    }
+
+    main {
+      margin-top: 18px; display: grid; gap: 16px;
+    }
+    .card {
+      background: linear-gradient(180deg, #141824, #0f121a);
+      border-radius: var(--radius);
+      border: 1px solid var(--purple-dark);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35), 0 0 0 1px var(--purple-glow);
+      padding: 20px;
+    }
+    h1, h2 { line-height: 1.2; margin: 0 0 10px; }
+    h1 { font-size: clamp(24px, 4vw, 34px); }
+    h2 { font-size: clamp(18px, 3vw, 22px); color: var(--muted); font-weight: 600; }
+    p { margin: 0.35rem 0 0.5rem; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Headshot styling */
+    .headshot {
+      float: left;
+      width: 280px;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 2px solid var(--purple);
+      margin: 0 24px 16px 0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3), 0 0 0 1px var(--purple-glow);
+    }
+
+    /* Music Section */
+    .music-section { margin-bottom: 40px; }
+    .playlists { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+    .playlist-item { 
+      background: linear-gradient(180deg, #141824, #0f121a);
+      border-radius: 16px; 
+      border: 1px solid var(--purple-dark);
+      padding: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25), 0 0 0 1px var(--purple-glow);
+    }
+    .playlist-title { 
+      font-size: 18px; 
+      font-weight: 600; 
+      color: var(--text); 
+      margin-bottom: 8px; 
+    }
+    .playlist-description { 
+      color: var(--muted); 
+      font-size: 14px; 
+      margin-bottom: 16px; 
+      line-height: 1.5;
+    }
+    .spotify-embed { 
+      border-radius: 12px; 
+      overflow: hidden;
+      border: 1px solid #1f2430;
+      background: #141824;
+      box-shadow: 0 2px 12px rgba(60,26,122,0.18);
+    }
+    .spotify-embed iframe {
+      border-radius: 12px !important;
+      border: none !important;
+      width: 100% !important;
+      height: 352px !important;
+      max-width: none !important;
+      min-width: auto !important;
+    }
+    
+    /* Image Carousel */
+    .image-carousel {
+      position: relative;
+      margin-top: 20px;
+      padding: 24px 0;
+      overflow: hidden;
+      width: 100%;
+    }
+    .carousel-viewport {
+      display: flex;
+      gap: 0px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      max-width: 100%;
+    }
+    .carousel-viewport::-webkit-scrollbar {
+      display: none;
+    }
+    .carousel-slide {
+      scroll-snap-align: center;
+      scroll-snap-stop: always;
+      flex: 0 0 auto;
+      height: 280px;
+      border-radius: 12px;
+      background: #0e1118;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 1px solid var(--purple);
+      position: relative;
+    }
+    .carousel-slide img {
+      height: 100%;
+      width: auto;
+      max-width: 100%;
+      object-fit: contain;
+      display: block;
+      background: #020617;
+    }
+    .carousel-slide figcaption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+      color: var(--text);
+      font-size: 12px;
+      padding: 20px 12px 8px;
+      text-align: center;
+    }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.14);
+      color: white;
+      border: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+      z-index: 10;
+      transition: background 0.2s ease;
+    }
+    .carousel-btn:hover {
+      background: rgba(255,255,255,0.24);
+    }
+    .carousel-btn:active {
+      transform: translateY(-50%) scale(0.97);
+    }
+    .carousel-btn.prev {
+      left: 6px;
+    }
+    .carousel-btn.next {
+      right: 6px;
+    }
+
+    /* Projects */
+    .projects { display: flex; flex-direction: column; gap: 32px; }
+    .project { 
+      display: grid; 
+      grid-template-columns: 1fr 1fr; 
+      gap: 24px; 
+      align-items: start;
+      padding: 24px; 
+      border-radius: 16px; 
+      border: 1px solid var(--purple-dark); 
+      background: linear-gradient(180deg, #141824, #0f121a);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25), 0 0 0 1px var(--purple-glow);
+    }
+    .project-image { 
+      width: 100%; 
+      height: 200px; 
+      object-fit: contain; 
+      border-radius: 8px; 
+    }
+    .project-image-link {
+      display: block;
+      width: 100%;
+      height: 140px;
+      text-decoration: none;
+    }
+    .project-image-placeholder {
+      width: 100%;
+      height: 140px;
+      border-radius: 12px;
+      border: 1px solid var(--purple);
+      background: linear-gradient(135deg, #0e1118, #1a1d26);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .project-image-placeholder:hover {
+      background: linear-gradient(135deg, #1a1d26, #2d3142);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    .pdf-icon {
+      font-size: 32px;
+      margin-bottom: 8px;
+      opacity: 0.8;
+    }
+    .pdf-text {
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 500;
+      opacity: 0.9;
+    }
+    .project-content { display: flex; flex-direction: column; gap: 8px; }
+    .project h3 { margin: 0; font-size: 18px; font-weight: 600; color: var(--text); }
+    .project-authors { color: var(--muted); font-size: 14px; }
+    .project-venue { 
+      font-style: italic; 
+      color: var(--text); 
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .project-venue a { 
+      color: var(--accent); 
+      text-decoration: none; 
+      font-weight: normal;
+    }
+    .project-venue a:hover { text-decoration: underline; }
+    .project-description { 
+      color: var(--text); 
+      font-size: 14px; 
+      line-height: 1.5; 
+      margin-top: 8px;
+    }
+    
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .project { 
+        grid-template-columns: 1fr; 
+        gap: 16px; 
+        text-align: center;
+      }
+      .project-image { 
+        width: 200px; 
+        height: 140px; 
+        margin: 0 auto;
+      }
+    }
+    
+    .badge { display: inline-block; font-size: 12px; color: #a7f3d0; background: #064e3b; padding: 2px 8px; border-radius: 999px; border: 1px solid #065f46; }
+
+    footer { margin-top: 24px; color: var(--muted); font-size: 14px; text-align: center; }
+    .hide { display: none !important; }
+
+    /* Responsive image height tweak */
+    @media (max-width: 480px) {
+      .gallery img { height: 140px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div style="font-size:clamp(18px,3vw,22px)">Lily Sun</div>
+      </div>
+      <nav role="tablist" aria-label="Site tabs">
+        <button class="tab-btn" role="tab" data-tab="home" aria-current="page">Home</button>
+        <button class="tab-btn" role="tab" data-tab="about">About</button>
+        <button class="tab-btn" role="tab" data-tab="research">Research</button>
+        <button class="tab-btn" role="tab" data-tab="fun">Fun</button>
+      </nav>
+    </header>
+
+    <main>
+      <!-- HOME -->
+      <section class="card" id="tab-home">
+        <h1>Hello :)</h1>
+        <img src="headshot.JPG" alt="Lily Sun" class="headshot" />
+        <p>Hi, I'm Lily (or you may know me as Xiaoqing). I'm a junior at MIT studying physics. Welcome to my infodump website :) </p>
+        <p>My research interests are broadly related to AI alignment. I've done some work on LLM feature representations and post-training (check out my <a href="#research">research</a> page). I really hope the transition to AI goes well.</p>
+        <p>Other than that, I'm just a college student trying to figure out life. Feel free to reach out at <a href="mailto:xqsun@mit.edu">xqsun@mit.edu</a>.</p>
+      </section>
+
+      <!-- ABOUT -->
+      <section class="card hide" id="tab-about">
+        <h1>Life Story</h1>
+        <p>I grew up in Singapore and went to <a href="https://en.wikipedia.org/wiki/Raffles_Girls%27_School_(Secondary)" target="_blank" rel="noopener">Raffles Girls' School</a> & <a href="https://en.wikipedia.org/wiki/Raffles_Institution" target="_blank" rel="noopener">Raffles Institution</a>. 
+          During high school I mostly occupied myself with physics (<a href="https://ipho-unofficial.org/countries/SGP/individual" target="_blank" rel="noopener">IPhO</a>) and later astronomy (<a href="https://astronomy.sg/singapore-astronomy-olympiad/ioaa-singapore-hall-of-fame/" target="_blank" rel="noopener">IOAA</a>) competitions. 
+          I also spent a lot of time on physics research through <a href="https://en.wikipedia.org/wiki/International_Young_Physicists%27_Tournament" target="_blank" rel="noopener">IYPT</a> (or <a href="https://cc.iypt.org/oypt2021/" target="_blank" rel="noopener">OYPT</a>) which is a great program. 
+          These allowed me to go to some pretty life-changing camps like <a href="https://www.worldscientific.com/pressroom/2023-02-06-01?srsltid=AfmBOorbpri2evJVSOr2mgATui53g8NbyQG8SZOhJV1AzMnp-0rXglCF" target="_blank" rel="noopener">SIYSS</a> and <a href="https://www.atlasfellowship.org/" target="_blank" rel="noopener">Atlas</a>. Unrelated to work I was also in the <a href="https://en.wikipedia.org/wiki/Singapore_National_Youth_Orchestra" target="_blank" rel="noopener">SNYO</a> which was super fun.</p>
+
+        <p>I then went to MIT and decided to major in physics. 
+          The summer after freshman year, I did <a href="https://misti.mit.edu/italy" target="_blank" rel="noopener">MISTI</a> at the University of Pisa in Italy (super fun).
+          At the beginning of sophomore year I got into AI interpretability, thanks to my GOAT advisor <a href="https://en.wikipedia.org/wiki/Max_Tegmark" target="_blank" rel="noopener">Max Tegmark</a>. 
+          I was also a <a href="https://www.matsprogram.org/" target="_blank" rel="noopener">MATS</a> 8.0 scholar under <a href="https://www.neelnanda.io/about" target="_blank" rel="noopener">Neel Nanda</a>. 
+          This was a 10/10 program and something I highly recommend for anyone looking to get into AI safety.</p>
+
+        <p>Currently I'm a junior. This summer I will be interning at <a href="https://www.jumptrading.com/" target="_blank" rel="noopener">Jump</a> as a QR, and I'm thinking about post-graduation plans.</p>
+
+      </section>
+
+      <!-- FUN -->
+      <section class="card hide" id="tab-fun">
+        <h1>Music</h1>
+        <p>My music taste is objectively the best in the world, so here are some amazing playlists.</p>
+        <div class="playlists">
+            <div class="playlist-item">
+              <div class="playlist-title">Classical</div>
+              <div class="playlist-description">60++ hours of classical because it is the best genre.</div>
+              <div class="spotify-embed" style="width:100%; display:flex; justify-content:center;">
+                <iframe
+                  data-testid="embed-iframe"
+                  style="
+                    border-radius: 12px;
+                    border: none;
+                    width: 100%;
+                    max-width: 340px;
+                    min-width: 220px;
+                    height: 352px;
+                    display: block;
+                    background: #141824;
+                    box-shadow: 0 2px 12px rgba(60,26,122,0.18);
+                  "
+                  src="https://open.spotify.com/embed/playlist/4T1fmjUip1HgdEmQdhwEeS?utm_source=generator"
+                  frameborder="0"
+                  allowfullscreen=""
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"
+                  title="Spotify Chill Vibes Playlist"
+                ></iframe>
+              </div>
+            </div>
+            
+            <div class="playlist-item">
+              <div class="playlist-title">Life story</div>
+              <div class="playlist-description">If 60 hours of classical is too much, these are some of the GOATs.</div>
+              <div class="spotify-embed">
+                <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5rdLsxtj2vEp2kAYLA7Dkz?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+              </div>
+            </div>
+
+            <div class="playlist-item">
+              <div class="playlist-title">Movie soundtracks</div>
+              <div class="playlist-description">This is probably quite a bad playlist objectively since it's just based on what movies I like / are nostalgic for me.</div>
+              <div class="spotify-embed">
+                <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/3k2QLw8qHXOMZgvWcjXW9y?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+              </div>
+            </div>
+            
+            <div class="playlist-item">
+              <div class="playlist-title">Needle drops</div>
+              <div class="playlist-description">Self-explanatory, IYKYK.</div>
+              <div class="spotify-embed">
+                <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2UqUSc2cJpYsjSHtZVm6kA?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+              </div>
+            </div>
+          </div>
+      
+        
+        <h1>Travel / Photography</h1>
+        <p>I love traveling and experiencing new places and things. Fun fact, since Aug 2023 when I started at MIT, I've flown a distance of 7.3x around the world, although a lot of that is just going home (BOS-SIN is brutal) or work-related stuff.</p>
+        <p>I like taking pictures. Most of these are taken with a Canon EOS R50, more on my Instagram.</p>
+        <div class="image-carousel">
+          <button class="carousel-btn prev" onclick="snapCarousel('travel', -1)">‹</button>
+          <div class="carousel-viewport" id="travel-viewport">
+            <figure class="carousel-slide">
+              <img src="travel/rainier.JPG" alt="rainier" loading="lazy" />
+              <figcaption>mt. rainier</figcaption>
+            </figure>
+
+            <figure class="carousel-slide">
+              <img src="travel/lighthaven.JPG" alt="lighthaven" loading="lazy" />
+              <figcaption>my office (lighthaven) at mats</figcaption>
+            </figure>
+
+            <figure class="carousel-slide">
+              <img src="travel/half dome.JPG" alt="half dome" loading="lazy" />
+              <figcaption>half dome</figcaption>
+            </figure>
+
+            <figure class="carousel-slide">
+              <img src="travel/lijiang.jpg" alt="lijiang" loading="lazy" />
+              <figcaption>lijiang old town</figcaption>
+            </figure>
+
+            <figure class="carousel-slide">
+              <img src="travel/puerto rico.jpg" alt="puerto rico" loading="lazy" />
+              <figcaption>puerto rico</figcaption>
+            </figure>
+
+            <figure class="carousel-slide">
+              <img src="travel/trinity.jpg" alt="trinity" loading="lazy" />
+              <figcaption>trinity college cambridge</figcaption>
+            </figure>
+
+            <figure class="carousel-slide">
+              <img src="travel/oppenheimer.JPG" alt="oppenheimer" loading="lazy" />
+              <figcaption>oppenheimer pond</figcaption>
+            </figure>
+
+            <figure class="carousel-slide">
+              <img src="travel/dolomites.JPG" alt="dolomites" loading="lazy" />
+              <figcaption>dolomites</figcaption>
+            </figure>
+
+            <figure class="carousel-slide">
+              <img src="travel/rome.jpg" alt="rome" loading="lazy" />
+              <figcaption>rome at 2am is the only way to avoid crowds</figcaption>
+            </figure>
+
+            <figure class="carousel-slide">
+              <img src="travel/palio di siena.JPG" alt="palio di siena" loading="lazy" />
+              <figcaption>palio di siena</figcaption>
+            </figure>
+
+            <figure class="carousel-slide">
+              <img src="travel/cinque terre.JPG" alt="cinque terre" loading="lazy" />
+              <figcaption>cinque terre</figcaption>
+            </figure>
+
+
+            <figure class="carousel-slide">
+              <img src="travel/eclipse.JPG" alt="eclipse" loading="lazy" />
+              <figcaption>total solar eclipse in maine</figcaption>
+          </figure>
+
+            <figure class="carousel-slide">
+              <img src="travel/miami.JPG" alt="miami" loading="lazy" />
+              <figcaption>miami</figcaption>
+          </figure>
+
+
+            <figure class="carousel-slide">
+              <img src="travel/brooklyn.JPG" alt="brooklyn" loading="lazy" />
+              <figcaption>brooklyn</figcaption>
+          </figure>
+
+            <figure class="carousel-slide">
+              <img src="travel/portugal.JPG" alt="portugal" loading="lazy" />
+              <figcaption>sintra</figcaption>
+          </figure>
+            
+          </div>
+          <button class="carousel-btn next" onclick="snapCarousel('travel', 1)">›</button>
+        </div>
+        
+      </section>
+
+
+      <!-- PROJECTS -->
+      <section class="card hide" id="tab-research">
+        <h1>Research Interests</h1>
+        <p>Models should be aligned with what we want them to be. To me this means 1. being able to interpret what they're doing and 2. being able to shape them intentionally.
+        </p>
+        
+        <h1>First-Author Publications</h1>
+        <div class="projects">
+          <article class="project">
+            <img src="research/SAEdata.png" alt="SAE Data Analysis" class="project-image" />
+            <div class="project-content">
+              <h3>Interpretable Embeddings with Sparse Autoencoders: A Data Analysis Toolkit</h3>
+              <div class="project-authors">N Jiang*, X Sun*, L Dunlap, L Smith, N Nanda</div>
+              <div class="project-venue">
+                <em>NeurIPS 2025 Mech Interp Workshop (Spotlight)</em> -
+                <a href="https://arxiv.org/abs/2512.10092" target="_blank" rel="noopener">arXiv:2512.10092</a>
+              </div>
+              <div class="project-description">
+                SAEs may or may not be useful for interpreting models, but we think they are useful for interpreting (text) data. We explore the use of SAEs as effectively a data labeller.
+              </div>
+            </div>
+          </article>
+          
+          <article class="project">
+              <img src="research/denseSAE.png" alt="Dense SAE Latents" class="project-image" />
+            <div class="project-content">
+              <h3>Dense SAE Latents Are Features, Not Bugs</h3>
+              <div class="project-authors">X Sun*, A Stolfo*, J Engels, B Wu, S Rajamanoharan, M Sachan, M Tegmark</div>
+              <div class="project-venue">
+                <em>NeurIPS 2025</em> - 
+                <a href="https://arxiv.org/abs/2506.15679" target="_blank" rel="noopener">arXiv:2506.15679</a>
+              </div>
+              <div class="project-description">
+                Some features in SAEs occur very frequently. We look into these features, finding that they often correspond to true high-frequency model signals.
+              </div>
+            </div>
+          </article>
+          
+
+          
+          <article class="project">
+            <img src="research/splashback.png" alt="Splashback" class="project-image" />
+            <div class="project-content">
+              <h3>The effects of projection on the splashback feature</h3>
+              <div class="project-authors">X Sun, S O'Neil, X Shen, M Vogelsberger</div>
+              <div class="project-venue">
+                <em>The Open Journal of Astrophysics 2025 8 (July).</em> - 
+                <a href="https://arxiv.org/abs/2503.04882" target="_blank" rel="noopener">arXiv:2503.04882</a>
+              </div>
+              <div class="project-description">
+                The boundaries of galaxy halos are fuzzy, and observations differ from simulations. We investigate the effects of projection on measuring this boundary.
+              </div>
+            </div>
+          </article>
+        </div>
+        
+        <h1>Other Publications</h1>
+        <div class="projects">
+          <article class="project">
+            <img src="research/geometry.png" alt="Geometry of Concepts" class="project-image" />
+            <div class="project-content">
+              <h3>The Geometry of Concepts: Sparse Autoencoder Feature Structure</h3>
+              <div class="project-authors">Y Li*, EJ Michaud*, DD Baek*, J Engels, X Sun, Max Tegmark</div>
+              <div class="project-venue">
+                <em>Entropy 27 (4), 344</em> - 
+                <a href="https://arxiv.org/abs/2410.19750" target="_blank" rel="noopener">arXiv:2410.19750</a>
+              </div>
+              <div class="project-description">
+                When I first joined Tegmark's group, I helped out with this project, showing how SAE feature geometry reflects semantic structure.
+              </div>
+            </div>
+          </article>
+
+          <article class="project">
+            <img src="research/hall.png" alt="Hall Thruster" class="project-image" />
+            <div class="project-content">
+              <h3>Performance and Plume Characterization of the MUlti–Stage Ignition Compact (MUSIC) Hall Effect Thruster</h3>
+              <div class="project-authors">GC Potrivitu, M Laterza, D Agarwal, X Sun, JWM Lim</div>
+              <div class="project-venue">
+                <em>Proceedings of the 38th International Electric Propulsion Conference 2024</em> - 
+                <a href="https://www.researchgate.net/publication/382529437_Performance_and_Plume_Characterization_of_the_MUlti-Stage_Ignition_Compact_MUSIC_Hall_Effect_Thruster" target="_blank" rel="noopener">ResearchGate</a>
+              </div>
+              <div class="project-description">
+                I interned at <a href="https://www.aliena.sg/" target="_blank" rel="noopener">Aliena</a> after high school and worked on characterizing a small Hall effect thruster.
+              </div>
+            </div>
+          </article>
+        </div>
+
+      </section>
+
+
+      <footer>
+        <h2 style="margin-top: 0; margin-bottom: 12px; font-size: 18px; color: var(--text);">Contact</h2>
+        <p style="margin: 4px 0;">Email: <a href="mailto:xqsun@mit.edu">xqsun@mit.edu</a></p>
+        <p style="margin: 4px 0;">LinkedIn: <a href="https://linkedin.com/in/lilysun004" target="_blank" rel="noopener">linkedin.com/in/lilysun004</a></p>
+        <p style="margin: 4px 0;">Google Scholar: <a href="https://scholar.google.com/citations?user=S4MrKBoAAAAJ&hl=en" target="_blank" rel="noopener">Xiaoqing Sun</a></p>
+        <p style="margin: 4px 0;">Twitter: <a href="https://x.com/lilysun004?s=21&t=Pa7y_4LzrcB9OMkvbQ_oVg" target="_blank" rel="noopener">@lilysun004</a></p>
+        <p style="margin: 4px 0;">Instagram: <a href="https://www.instagram.com/small.sunnysideup/" target="_blank" rel="noopener">@small.sunnysideup</a></p>
+        <p style="margin-top: 24px; margin-bottom: 0;">© <span id="y"></span> Lily. Built with vanilla HTML/CSS/JS. Hosted on GitHub Pages.</p>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // Simple tab router using hash (e.g., #fun)
+    const tabs = ["home","about","research","fun"];
+    const buttons = document.querySelectorAll('.tab-btn');
+
+    function showTab(name) {
+      tabs.forEach(t => {
+        const el = document.getElementById(`tab-${t}`);
+        const btn = document.querySelector(`.tab-btn[data-tab="${t}"]`);
+        if (!el || !btn) return;
+        const isActive = t === name;
+        el.classList.toggle('hide', !isActive);
+        btn.setAttribute('aria-current', isActive ? 'page' : 'false');
+      });
+    }
+
+    buttons.forEach(b => b.addEventListener('click', () => {
+      const target = b.getAttribute('data-tab');
+      if (target) {
+        location.hash = target; // updates URL
+      }
+    }));
+
+    function initFromHash() {
+      const hash = location.hash.replace('#','');
+      const target = tabs.includes(hash) ? hash : 'home';
+      showTab(target);
+    }
+
+    window.addEventListener('hashchange', initFromHash);
+    initFromHash();
+
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
+    
+    // Image Carousel functionality
+    function getCenteredIndex(viewport, slides) {
+      const mid = viewport.scrollLeft + viewport.clientWidth / 2;
+      let best = 0, bestDist = Infinity;
+      slides.forEach((el, i) => {
+        const rectLeft = el.offsetLeft;
+        const rectMid = rectLeft + el.offsetWidth / 2;
+        const d = Math.abs(rectMid - mid);
+        if (d < bestDist) {
+          best = i;
+          bestDist = d;
+        }
+      });
+      return best;
+    }
+    
+    function snapCarousel(carouselId, delta) {
+      const viewport = document.getElementById(`${carouselId}-viewport`);
+      if (!viewport) return;
+      
+      const slides = Array.from(viewport.querySelectorAll('.carousel-slide'));
+      const i = getCenteredIndex(viewport, slides);
+      const next = Math.min(slides.length - 1, Math.max(0, i + delta));
+      slides[next].scrollIntoView({
+        behavior: 'smooth',
+        inline: 'center',
+        block: 'nearest'
+      });
+    }
+  </script>
+</body>
+</html>
