@@ -75,7 +75,8 @@
       padding: 20px;
     }
     h1, h2 { line-height: 1.2; margin: 0 0 10px; }
-    h1 { font-size: clamp(24px, 4vw, 34px); }
+    h1 { font-size: clamp(24px, 4vw, 34px); margin-top: 28px; }
+    h1:first-child { margin-top: 0; }
     h2 { font-size: clamp(18px, 3vw, 22px); color: var(--muted); font-weight: 600; }
     p { margin: 0.35rem 0 0.5rem; }
     a { color: var(--accent); text-decoration: none; }
@@ -220,16 +221,19 @@
 
     /* Projects */
     .projects { display: flex; flex-direction: column; gap: 32px; }
-    .project { 
-      display: grid; 
-      grid-template-columns: 1fr 1fr; 
-      gap: 24px; 
+    .project {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
       align-items: start;
-      padding: 24px; 
-      border-radius: 16px; 
-      border: 1px solid var(--purple-dark); 
+      padding: 24px;
+      border-radius: 16px;
+      border: 1px solid var(--purple-dark);
       background: linear-gradient(180deg, #141824, #0f121a);
       box-shadow: 0 4px 20px rgba(0,0,0,0.25), 0 0 0 1px var(--purple-glow);
+    }
+    .project-no-image {
+      grid-template-columns: 1fr;
     }
     .project-image { 
       width: 100%; 
@@ -339,7 +343,7 @@
         <h1>Hello :)</h1>
         <img src="headshot.JPG" alt="Lily Sun" class="headshot" />
         <p>Hi, I'm Lily (or you may know me as Xiaoqing). I'm a junior at MIT studying physics. Welcome to my infodump website :) </p>
-        <p>My research interests are broadly related to AI alignment. I've done some work on LLM feature representations and post-training (check out my <a href="#research">research</a> page). I really hope the transition to AI goes well.</p>
+        <p>My research interests are broadly related to AI alignment. I've done some work on LLM feature representations and post-training (check out my <a href="#research">research</a> page). I think understanding models better is important so we can make sure they do what we want them to do.</p>
         <p>Other than that, I'm just a college student trying to figure out life. Feel free to reach out at <a href="mailto:xqsun@mit.edu">xqsun@mit.edu</a>.</p>
       </section>
 
@@ -352,7 +356,7 @@
           These allowed me to go to some pretty life-changing camps like <a href="https://www.worldscientific.com/pressroom/2023-02-06-01?srsltid=AfmBOorbpri2evJVSOr2mgATui53g8NbyQG8SZOhJV1AzMnp-0rXglCF" target="_blank" rel="noopener">SIYSS</a> and <a href="https://www.atlasfellowship.org/" target="_blank" rel="noopener">Atlas</a>. Unrelated to work I was also in the <a href="https://en.wikipedia.org/wiki/Singapore_National_Youth_Orchestra" target="_blank" rel="noopener">SNYO</a> which was super fun.</p>
 
         <p>I then went to MIT and decided to major in physics. 
-          The summer after freshman year, I did <a href="https://misti.mit.edu/italy" target="_blank" rel="noopener">MISTI</a> at the University of Pisa in Italy (super fun).
+          The summer after freshman year, I did <a href="https://misti.mit.edu/italy" target="_blank" rel="noopener">MISTI</a> at the University of Pisa in Italy.
           At the beginning of sophomore year I got into AI interpretability, thanks to my GOAT advisor <a href="https://en.wikipedia.org/wiki/Max_Tegmark" target="_blank" rel="noopener">Max Tegmark</a>. 
           I was also a <a href="https://www.matsprogram.org/" target="_blank" rel="noopener">MATS</a> 8.0 scholar under <a href="https://www.neelnanda.io/about" target="_blank" rel="noopener">Neel Nanda</a>. 
           This was a 10/10 program and something I highly recommend for anyone looking to get into AI safety.</p>
@@ -362,7 +366,7 @@
         <h1>Recently</h1>
         <ul>
           <li>[2026.02.23] I spent January 2026 in London doing the MATS Extension! Started on a project about model values during post-training, will continue working on this during the semester.</li>
-          <li>[2026.02.23] This spring at MIT I am finishing my graduation requirements. We'll see what happens next.</li>
+          <li>[2026.03.23] I decided to graduate MIT a year early i.e. May 2026, with uncertain post-grad plans, but super open to chat about this.</li>
         </ul>
       </section>
 
@@ -520,6 +524,17 @@
         <p>Models should be aligned with what we want them to be. To me this means 1. being able to interpret what they're doing and 2. being able to shape them intentionally.
         </p>
         
+        <h1>In-Progress</h1>
+        <div class="projects">
+          <article class="project project-no-image">
+            <p><strong>Model values during post-training.</strong> Model values are one high-level descriptor of model behavior. How do these change over post-training? Can we predict how a given post-training dataset will change a model's values without actually training the model?</p>
+          </article>
+
+          <article class="project project-no-image">
+            <p><strong>Edge of stoachastic stability.</strong> How do different optimizers affect the edge of stochastic stability?</p>
+          </article>
+        </div>
+
         <h1>First-Author Publications</h1>
         <div class="projects">
           <article class="project">
