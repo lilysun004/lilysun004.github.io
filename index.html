@@ -342,9 +342,9 @@
       <section class="card" id="tab-home">
         <h1>Hello :)</h1>
         <img src="headshot.JPG" alt="Lily Sun" class="headshot" />
-        <p>Hi, I'm Lily (or you may know me as Xiaoqing). I'm a junior at MIT studying physics. Welcome to my infodump website :) </p>
-        <p>My research interests are broadly related to AI alignment. I've done some work on LLM feature representations and post-training (check out my <a href="#research">research</a> page). I think understanding models better is important so we can make sure they do what we want them to do.</p>
-        <p>Other than that, I'm just a college student trying to figure out life. Feel free to reach out at <a href="mailto:xqsun@mit.edu">xqsun@mit.edu</a>.</p>
+        <p>Hi, I'm Lily (or you may know me as Xiaoqing). I recently graduated from MIT. Welcome to my infodump website :) </p>
+        <p>I was a physics major and my research interests are in AI alignment. I've done some work on LLM feature representations and post-training (check out my <a href="#research">research</a> page). I think understanding models better is important so we can make sure they do what we want them to do.</p>
+        <p>Other than that, I enjoy travelling, playing and listening to (classical) music, walking/hiking/gymming, movies (Marvel/Star Wars) and consumerism. Feel free to reach out at <a href="mailto:xqsun@mit.edu">xqsun@mit.edu</a>.</p>
       </section>
 
       <!-- ABOUT -->
@@ -361,23 +361,75 @@
           I was also a <a href="https://www.matsprogram.org/" target="_blank" rel="noopener">MATS</a> 8.0 scholar under <a href="https://www.neelnanda.io/about" target="_blank" rel="noopener">Neel Nanda</a>. 
           This was a 10/10 program and something I highly recommend for anyone looking to get into AI safety.</p>
 
-        <p>Currently I'm a junior. This summer I will be interning at <a href="https://www.jumptrading.com/" target="_blank" rel="noopener">Jump</a> as a QR, and I'm thinking about post-graduation plans.</p>
+        <p>This summer I'm interning at <a href="https://www.jumptrading.com/" target="_blank" rel="noopener">Jump</a> as a quantitative researcher.</p>
 
         <h1>Recently</h1>
         <ul>
-          <li>[2026.05.02] Went to ICLR and it was fun. Will most likely be at ICML in July.</li>
-          <li>[2026.03.23] I decided to graduate MIT a year early i.e. May 2026, with uncertain post-grad plans, but super open to chat about this.</li>
-          <li>[2026.02.23] I spent January 2026 in London doing the MATS Extension! Started on a project about model values during post-training, will continue working on this during the semester.</li>
+          <li>[2026.07.01] Life updates: Graduated, visa delays, will *not* be going to ICML :(</li>
         </ul>
       </section>
 
       <!-- FUN -->
       <section class="card hide" id="tab-fun">
-        <h1>Music</h1>
-        <p>My music taste is fire in my (unbiased) opinion, so here are some amazing playlists.</p>
+
+        <h1>travel / photography</h1>
+        <div style="display:flex; align-items:center; gap:24px; margin-bottom:24px;">
+          <div style="flex:0 0 25%; max-width:25%;">
+            <img src="travel/flighty.PNG" alt="Flighty" style="width:100%; height:auto; display:block;" />
+          </div>
+          <div style="flex:1;">
+            <p>i love travelling and experiencing new places and things. here's my flighty from aug 2023-jun 2026... i kinda love long flights. the next on the bucketlist are scotland and new zealand and hawaii.</p> 
+            <p>here are some pics, i have way too many so you should follow me on instagram for more.</p>
+          </div>
+        </div>
+
+        <div class="image-carousel">
+          <button class="carousel-btn prev" onclick="snapCarousel('travel', -1)">‹</button>
+          <div class="carousel-viewport" id="travel-viewport">
+            <figure class="carousel-slide">
+              <img src="travel/skydive.JPG" alt="rainier" loading="lazy" />
+              <figcaption>skydiving (graduation '26) i wanna learn fr but first i gotta learn how to drive</figcaption>
+            </figure>
+
+            <figure class="carousel-slide">
+              <img src="travel/iclr26.JPG" alt="rainier" loading="lazy" />
+              <figcaption>rio (iclr '26)</figcaption>
+            </figure>
+
+            <figure class="carousel-slide">
+              <img src="travel/neurips.JPG" alt="rainier" loading="lazy" />
+              <figcaption>sunny san diego (neurips '25)</figcaption>
+            </figure>
+
+            <figure class="carousel-slide">
+              <img src="travel/lighthaven.JPG" alt="lighthaven" loading="lazy" />
+              <figcaption>my office "lighthaven" at mats (summer '25)</figcaption>
+            </figure>
+
+            <figure class="carousel-slide">
+              <img src="travel/iclr25.jpeg" alt="rainier" loading="lazy" />
+              <figcaption>home (iclr '25)</figcaption>
+            </figure>
+
+            <figure class="carousel-slide">
+              <img src="travel/dolomites.JPG" alt="dolomites" loading="lazy" />
+              <figcaption>dolomites (summer '24)</figcaption>
+            </figure>
+
+            <figure class="carousel-slide">
+              <img src="travel/palio di siena.JPG" alt="palio di siena" loading="lazy" />
+              <figcaption>siena, italy (summer '24)</figcaption>
+            </figure>
+
+          </div>
+          <button class="carousel-btn next" onclick="snapCarousel('travel', 1)">›</button>
+        </div>
+
+        <h1>music</h1>
+        <p>my music taste is fire in my (unbiased) opinion, so here are some amazing playlists. i don't have good videos of myself playing the violin but if you squint you can <a href="https://youtu.be/wh7cGcr-viM?si=Z52e-mAn6OATKNw9" target="_blank" rel="noopener">see</a> <a href="https://youtu.be/KUpGNSYr6zU?si=gDnDzPHWbqR45aJW" target="_blank" rel="noopener">me</a> <a href="https://youtu.be/jBCEGSQMJaQ?si=8Z3cqbJfFdMD6CH0" target="_blank" rel="noopener">here</a>.</p>
         <div class="playlists">
             <div class="playlist-item">
-              <div class="playlist-title">Classical</div>
+              <div class="playlist-title">classical</div>
               <div class="playlist-description">70++ hours of classical because it is the best genre.</div>
               <div class="spotify-embed" style="width:100%; display:flex; justify-content:center;">
                 <iframe
@@ -404,118 +456,33 @@
             </div>
             
             <div class="playlist-item">
-              <div class="playlist-title">Life story</div>
-              <div class="playlist-description">If 70 hours of classical is too much, these are some of the GOATs.</div>
+              <div class="playlist-title">life story</div>
+              <div class="playlist-description">if 70 hours of classical is too much, these are some of the goats.</div>
               <div class="spotify-embed">
                 <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5rdLsxtj2vEp2kAYLA7Dkz?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
               </div>
             </div>
 
             <div class="playlist-item">
-              <div class="playlist-title">Movie soundtracks</div>
-              <div class="playlist-description">This is probably quite a bad playlist objectively since it's just based on what movies I like / are nostalgic for me.</div>
+              <div class="playlist-title">movie soundtracks</div>
+              <div class="playlist-description">this is probably quite a bad playlist objectively since it's just based on what movies I like / are nostalgic for me.</div>
               <div class="spotify-embed">
                 <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/3k2QLw8qHXOMZgvWcjXW9y?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
               </div>
             </div>
             
             <div class="playlist-item">
-              <div class="playlist-title">Needle drops</div>
-              <div class="playlist-description">Self-explanatory, IYKYK.</div>
+              <div class="playlist-title">needle drops</div>
+              <div class="playlist-description">self-explanatory, iykyk.</div>
               <div class="spotify-embed">
                 <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2UqUSc2cJpYsjSHtZVm6kA?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
               </div>
             </div>
           </div>
-      
-        
-        <h1>Travel / Photography</h1>
-        <p>I love traveling and experiencing new places and things. Fun fact, since Aug 2023 when I started at MIT, I've flown 63 flights for a total distance of 7.9x around the world, although a lot of that is just going home (BOS-SIN is brutal) or work-related stuff.</p>
-        <p>I like taking pictures. Most of these are taken with a Canon EOS R50, more on my Instagram.</p>
-        <div class="image-carousel">
-          <button class="carousel-btn prev" onclick="snapCarousel('travel', -1)">‹</button>
-          <div class="carousel-viewport" id="travel-viewport">
-            <figure class="carousel-slide">
-              <img src="travel/rainier.JPG" alt="rainier" loading="lazy" />
-              <figcaption>mt. rainier</figcaption>
-            </figure>
 
-            <figure class="carousel-slide">
-              <img src="travel/lighthaven.JPG" alt="lighthaven" loading="lazy" />
-              <figcaption>my office (lighthaven) at mats</figcaption>
-            </figure>
+        <h1>others</h1>
+        <p>it feels performative to put more hobbies here but i enjoy doing lots of stuff, i have a very low bar for being excited and finding things enjoyable. it's hard to find time to travel or do big fun things given some of my other priorities right now (career, research, figuring out life) plus i have to adjust to post-grad life, so recently i've just become gym and protein and having good fits pilled.</p>
 
-            <figure class="carousel-slide">
-              <img src="travel/half dome.JPG" alt="half dome" loading="lazy" />
-              <figcaption>half dome</figcaption>
-            </figure>
-
-            <figure class="carousel-slide">
-              <img src="travel/lijiang.jpg" alt="lijiang" loading="lazy" />
-              <figcaption>lijiang old town</figcaption>
-            </figure>
-
-            <figure class="carousel-slide">
-              <img src="travel/puerto rico.jpg" alt="puerto rico" loading="lazy" />
-              <figcaption>puerto rico</figcaption>
-            </figure>
-
-            <figure class="carousel-slide">
-              <img src="travel/trinity.jpg" alt="trinity" loading="lazy" />
-              <figcaption>trinity college cambridge</figcaption>
-            </figure>
-
-            <figure class="carousel-slide">
-              <img src="travel/oppenheimer.JPG" alt="oppenheimer" loading="lazy" />
-              <figcaption>oppenheimer pond</figcaption>
-            </figure>
-
-            <figure class="carousel-slide">
-              <img src="travel/dolomites.JPG" alt="dolomites" loading="lazy" />
-              <figcaption>dolomites</figcaption>
-            </figure>
-
-            <figure class="carousel-slide">
-              <img src="travel/rome.jpg" alt="rome" loading="lazy" />
-              <figcaption>rome at 2am is the only way to avoid crowds</figcaption>
-            </figure>
-
-            <figure class="carousel-slide">
-              <img src="travel/palio di siena.JPG" alt="palio di siena" loading="lazy" />
-              <figcaption>palio di siena</figcaption>
-            </figure>
-
-            <figure class="carousel-slide">
-              <img src="travel/cinque terre.JPG" alt="cinque terre" loading="lazy" />
-              <figcaption>cinque terre</figcaption>
-            </figure>
-
-
-            <figure class="carousel-slide">
-              <img src="travel/eclipse.JPG" alt="eclipse" loading="lazy" />
-              <figcaption>total solar eclipse in maine</figcaption>
-          </figure>
-
-            <figure class="carousel-slide">
-              <img src="travel/miami.JPG" alt="miami" loading="lazy" />
-              <figcaption>miami</figcaption>
-          </figure>
-
-
-            <figure class="carousel-slide">
-              <img src="travel/brooklyn.JPG" alt="brooklyn" loading="lazy" />
-              <figcaption>brooklyn</figcaption>
-          </figure>
-
-            <figure class="carousel-slide">
-              <img src="travel/portugal.JPG" alt="portugal" loading="lazy" />
-              <figcaption>sintra</figcaption>
-          </figure>
-            
-          </div>
-          <button class="carousel-btn next" onclick="snapCarousel('travel', 1)">›</button>
-        </div>
-        
       </section>
 
 
@@ -536,7 +503,7 @@
           </article>
         </div>
 
-        <h1>First-Author Publications</h1>
+        <h1>Selected Works</h1>
         <div class="projects">
           <article class="project">
             <img src="research/SAEdata.png" alt="SAE Data Analysis" class="project-image" />
@@ -586,7 +553,7 @@
           </article>
         </div>
         
-        <h1>Other Publications</h1>
+        <h1>Other Works</h1>
         <div class="projects">
           <article class="project">
             <img src="research/geometry.png" alt="Geometry of Concepts" class="project-image" />
@@ -619,7 +586,7 @@
           </article>
         </div>
 
-        <h1>Other Stuff</h1>
+        <h1>Miscellaneous</h1>
 
         <h2>8.13 Experimental Physics</h2>
         <p>8.13 (also known as Junior Lab) is the big experimental physics class for physics majors at MIT. It is known to be pretty time-consuming, which I found to be true, but it was also really fun and I enjoyed doing experiments that involved touching stuff other than a keyboard. For fun, here are my lab reports.</p>
@@ -645,6 +612,7 @@
             <div class="project-content">
               <h3>Experiment 3</h3>
               <div class="project-description">Muons (the particle not the optimizer) are created in the atmosphere by cosmic rays. Muon counts vary with altitude and latitude, so I brought the apparatus (CosmicWatch) with me on the plane to ICLR in Rio to measure this effect. I was a little stressed that TSA would stop me for having a mysterious duct-taped device with blinking lights but all went well. </div>
+              <a href="projects/8.13_Expt3.pdf" target="_blank" rel="noopener" style="font-size:14px; margin-top:8px; display:inline-block;">View PDF</a>
             </div>
           </article>
         </div>
