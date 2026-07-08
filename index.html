@@ -317,6 +317,45 @@
     footer { margin-top: 24px; color: var(--muted); font-size: 14px; text-align: center; }
     .hide { display: none !important; }
 
+    /* Checklist styling */
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 16px 0;
+    }
+    .checklist-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      margin: 6px 0;
+      border-radius: 8px;
+      background: rgba(60, 26, 122, 0.12);
+      border: 1px solid var(--purple-dark);
+      transition: all 0.2s ease;
+    }
+    .checklist-item:hover {
+      background: rgba(60, 26, 122, 0.2);
+      border-color: var(--purple);
+    }
+    .checklist-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      flex-shrink: 0;
+      accent-color: var(--accent-2);
+    }
+    .checklist-item label {
+      cursor: pointer;
+      flex: 1;
+      margin: 0;
+      font-size: 15px;
+    }
+    .checklist-item input[type="checkbox"]:checked + label {
+      color: var(--muted);
+      text-decoration: line-through;
+    }
+
     /* Responsive image height tweak */
     @media (max-width: 480px) {
       .gallery img { height: 140px; }
@@ -378,8 +417,15 @@
             <img src="travel/flighty.PNG" alt="Flighty" style="width:100%; height:auto; display:block;" />
           </div>
           <div style="flex:1;">
-            <p>i love travelling and experiencing new places and things. here's my flighty from aug 2023-jun 2026... i kinda love long flights. the next on the bucketlist are scotland and new zealand and hawaii.</p> 
-            <p>here are some pics, i have way too many so you should follow me on instagram for more.</p>
+            <p>i love travelling and experiencing new places and things. here's my flighty from aug 2023-jun 2026... and here's my very specific bucketlist:</p>
+            <ul style="margin: 12px 0; padding-left: 20px;">
+              <li>hawaii</li>
+              <li>southern italy (matera/puglia, amalfi), i love italy</li>
+              <li>road trip to vegas + grand canyon/bryce/zion/etc + resorts and/or a horse ranch</li>
+              <li>hike in patagonia and then go to antarctica (<a href="https://tv.apple.com/us/show/long-way-up/umc.cmc.1nv0tluok21c2f8549mdjqdnh" target="_blank" rel="noopener">this</a>)</li>
+              <li>scottish highlands road trip</li>
+              <li>kathmandu/bhutan</li>
+            </ul>
           </div>
         </div>
 
@@ -492,9 +538,36 @@
           >Loading…</iframe>
         </div>
 
-        <h1>others</h1>
-        <p>it feels performative to put more hobbies here because i don't have a set list / i like lots of stuff, i have a very low bar for being excited about and enjoying something. it's hard to find time to travel or do big fun things given some of my other priorities right now (career, research, figuring out post-grad life), so recently i've just become gym and protein and having good fits pilled.</p>
-        <p>i need to learn how to drive so that i can do things like go to national parks/camp, skydive/paraglide/bungee jump, and learn to fly a plane. i just hate cars though :(</p>
+        <h1>recently & bucketlist</h1>
+        <p>it's hard to find time to travel or do big fun things given some of my other priorities right now (career, research, figuring out post-grad life), so recently i've just become gym and protein and having good fits pilled. i even started running.</p>
+
+        <h2>hobby bucketlist</h2>
+        <ul class="checklist">
+          <li class="checklist-item">
+            <input type="checkbox" id="item1" checked />
+            <label for="item1">skydive (now it's time to actually get a license)</label>
+          </li>
+          <li class="checklist-item">
+            <input type="checkbox" id="item2" />
+            <label for="item2">paraglide</label>
+          </li>
+          <li class="checklist-item">
+            <input type="checkbox" id="item3" />
+            <label for="item3">bungee jump</label>
+          </li>
+          <li class="checklist-item">
+            <input type="checkbox" id="item4" />
+            <label for="item4">learn to drive...</label>
+          </li>
+          <li class="checklist-item">
+            <input type="checkbox" id="item5" />
+            <label for="item5">learn to ride a motorbike</label>
+          </li>
+          <li class="checklist-item">
+            <input type="checkbox" id="item6" />
+            <label for="item6">get a private pilot license</label>
+          </li>
+        </ul>
 
       </section>
 
