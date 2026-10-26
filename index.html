@@ -361,6 +361,7 @@
       .gallery img { height: 140px; }
     }
   </style>
+  <link rel="stylesheet" href="timeline/timeline.css" />
 </head>
 <body>
   <div class="wrap">
@@ -382,30 +383,20 @@
         <h1>Hello :)</h1>
         <img src="headshot.JPG" alt="Lily Sun" class="headshot" />
         <p>Hi, I'm Lily (or you may know me as Xiaoqing). I recently graduated from MIT. Welcome to my infodump website :) </p>
-        <p>I was a physics major and my research interests are in AI alignment. I've done some work on LLM feature representations and post-training (check out my <a href="#research">research</a> page). I think understanding models better is important so we can make sure they do what we want them to do.</p>
+        <p>This fall I'm an <a href="https://alignment.anthropic.com/2025/anthropic-fellows-program-2026/" target="_blank" rel="noopener">Anthropic Fellow</a> working on safety research. I was a physics major and my research interests are in AI alignment. I've done some work on LLM feature representations and post-training (check out my <a href="#research">research</a> page). I think understanding models better is important so we can make sure they do what we want them to do.</p>
         <p>Other than that, I enjoy travelling, playing and listening to (classical) music, walking/hiking/gymming, movies (Marvel/Star Wars) and consumerism. Feel free to reach out at <a href="mailto:xqsun@mit.edu">xqsun@mit.edu</a>.</p>
       </section>
 
       <!-- ABOUT -->
       <section class="card hide" id="tab-about">
         <h1>Life Story</h1>
-        <p>I grew up in Singapore and went to <a href="https://en.wikipedia.org/wiki/Raffles_Girls%27_School_(Secondary)" target="_blank" rel="noopener">Raffles Girls' School</a> & <a href="https://en.wikipedia.org/wiki/Raffles_Institution" target="_blank" rel="noopener">Raffles Institution</a>. 
-          During high school I mostly occupied myself with physics (<a href="https://ipho-unofficial.org/countries/SGP/individual" target="_blank" rel="noopener">IPhO</a>) and later astronomy (<a href="https://astronomy.sg/singapore-astronomy-olympiad/ioaa-singapore-hall-of-fame/" target="_blank" rel="noopener">IOAA</a>) competitions. 
-          I also spent a lot of time on physics research through <a href="https://en.wikipedia.org/wiki/International_Young_Physicists%27_Tournament" target="_blank" rel="noopener">IYPT</a> (or <a href="https://cc.iypt.org/oypt2021/" target="_blank" rel="noopener">OYPT</a>) which is a great program. 
-          These allowed me to go to some pretty life-changing camps like <a href="https://www.worldscientific.com/pressroom/2023-02-06-01?srsltid=AfmBOorbpri2evJVSOr2mgATui53g8NbyQG8SZOhJV1AzMnp-0rXglCF" target="_blank" rel="noopener">SIYSS</a> and <a href="https://www.atlasfellowship.org/" target="_blank" rel="noopener">Atlas</a>. Unrelated to work I was also in the <a href="https://en.wikipedia.org/wiki/Singapore_National_Youth_Orchestra" target="_blank" rel="noopener">SNYO</a> which was super fun.</p>
+        <p>I grew up in Singapore, studied physics at MIT, and now work on AI safety.</p>
 
-        <p>I then went to MIT and decided to major in physics. 
-          The summer after freshman year, I did <a href="https://misti.mit.edu/italy" target="_blank" rel="noopener">MISTI</a> at the University of Pisa in Italy.
-          At the beginning of sophomore year I got into AI interpretability, thanks to my GOAT advisor <a href="https://en.wikipedia.org/wiki/Max_Tegmark" target="_blank" rel="noopener">Max Tegmark</a>. 
-          I was also a <a href="https://www.matsprogram.org/" target="_blank" rel="noopener">MATS</a> 8.0 scholar under <a href="https://www.neelnanda.io/about" target="_blank" rel="noopener">Neel Nanda</a>. 
-          This was a 10/10 program and something I highly recommend for anyone looking to get into AI safety.</p>
+        <!-- Timeline entries live in timeline/life.js -->
+        <div class="timeline" id="life-timeline"></div>
+        <script src="timeline/timeline.js"></script>
+        <script src="timeline/life.js"></script>
 
-        <p>This summer I'm interning at <a href="https://www.jumptrading.com/" target="_blank" rel="noopener">Jump</a> as a quantitative researcher.</p>
-
-        <h1>Recently</h1>
-        <ul>
-          <li>[2026.07.01] Life updates: Graduated, visa delays, will *not* be going to ICML :(</li>
-        </ul>
       </section>
 
       <!-- FUN -->
@@ -417,7 +408,7 @@
             <img src="travel/flighty.PNG" alt="Flighty" style="width:100%; height:auto; display:block;" />
           </div>
           <div style="flex:1;">
-            <p>i love travelling and experiencing new places and things. here's my flighty from aug 2023-jun 2026... and here's my very specific bucketlist:</p>
+            <p>i love travelling and experiencing new places and things. here's my flighty since aug 2023... and here's my very specific bucketlist:</p>
             <ul style="margin: 12px 0; padding-left: 20px;">
               <li>hawaii</li>
               <li>southern italy (matera/puglia, amalfi), i love italy</li>
@@ -527,7 +518,7 @@
           </div>
 
         <h1>movies</h1>
-        <p>i grew up on harry potter and YA books and wrote my college essays about writing fanfiction as a kid (and they must've worked). i'm a fan of marvel (captain america) and star wars (prequels and andor, don't ask) and action movies in general, and also sci-fi / adventure / biopics of cool people. feel free to drop recs below.</p>
+        <p>i grew up on harry potter and YA books and wrote my college essays about writing fanfiction as a kid (somehow worked). i'm a fan of marvel (captain america) and star wars and action movies in general, and also sci-fi / adventure / biopics of cool people. i'm trying to watch more stuff though. feel free to drop recs below.</p>
         <div class="spotify-embed" style="width:100%;">
           <iframe
             src="https://docs.google.com/forms/d/e/1FAIpQLSfkJgQMHVgaiVMznKnHzUPzC9yQEgc5MzjEkj7UyQTNdXfXPA/viewform?embedded=true"
@@ -538,7 +529,7 @@
           >Loading…</iframe>
         </div>
 
-        <h1>recently & bucketlist</h1>
+        <h1>recently</h1>
         <p>it's hard to find time to travel or do big fun things given some of my other priorities right now (career, research, figuring out post-grad life), so recently i've just become gym and protein and having good fits pilled. i even started running.</p>
 
         <h2>hobby bucketlist</h2>
@@ -577,13 +568,6 @@
         <h1>Research Interests</h1>
         <p>Models should be aligned. To me this means 1. being able to interpret what they're doing and 2. being able to shape them intentionally.
         </p>
-        
-        <h1>In-Progress</h1>
-        <div class="projects">
-          <article class="project project-no-image">
-            <p><strong>Edge of stochastic stability.</strong> We know that deep networks train at the edge of stability in GD and at an analogous stochastic edge for SGD. Optimizers + SGD is a little less understood and we wonder if there is a universal descriptor of this regime.</p>
-          </article>
-        </div>
 
         <h1>Selected Works</h1>
         <div class="projects">
