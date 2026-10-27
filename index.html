@@ -298,18 +298,32 @@
       margin-top: 8px;
     }
     
-    /* Responsive design */
+    .project-lab { grid-template-columns: 200px 1fr; }
+    .project-lab .project-image { width: 200px; height: 200px; object-fit: cover; }
+    .project-pdf { font-size: 14px; margin-top: 8px; display: inline-block; }
+
+    /* Travel intro: flighty screenshot beside the bucket list */
+    .travel-intro { display: flex; align-items: center; gap: 24px; margin-bottom: 24px; }
+    .travel-intro-img { flex: 0 0 25%; max-width: 25%; }
+    .travel-intro-img img { width: 100%; height: auto; display: block; }
+    .travel-intro-text { flex: 1; }
+
+    /* Responsive design: on narrow screens, pictures sit above their text */
     @media (max-width: 768px) {
-      .project { 
-        grid-template-columns: 1fr; 
-        gap: 16px; 
+      .project, .project-lab {
+        grid-template-columns: 1fr;
+        gap: 16px;
         text-align: center;
       }
-      .project-image { 
-        width: 200px; 
-        height: 140px; 
+      .project-image {
+        width: 100%;
+        max-width: 360px;
+        height: auto;
+        max-height: 240px;
         margin: 0 auto;
       }
+      .project-lab .project-image { width: 200px; height: 200px; }
+      .playlists { grid-template-columns: 1fr; }
     }
     
     .badge { display: inline-block; font-size: 12px; color: #a7f3d0; background: #064e3b; padding: 2px 8px; border-radius: 999px; border: 1px solid #065f46; }
@@ -356,9 +370,21 @@
       text-decoration: line-through;
     }
 
-    /* Responsive image height tweak */
-    @media (max-width: 480px) {
-      .gallery img { height: 140px; }
+    /* Phones */
+    @media (max-width: 600px) {
+      .wrap { padding: 16px 12px 48px; }
+      .card, .project, .playlist-item { padding: 16px; }
+      header { flex-direction: column; align-items: stretch; gap: 10px; }
+      .tab-btn { flex: 1; padding: 10px 8px; }
+      .headshot {
+        float: none; display: block;
+        width: 100%; max-width: 280px; height: auto; aspect-ratio: 1;
+        margin: 0 auto 16px;
+      }
+      .travel-intro { flex-direction: column; align-items: stretch; gap: 16px; }
+      .travel-intro-img { flex: none; max-width: 220px; margin: 0 auto; }
+      .carousel-slide { height: 220px; max-width: calc(100vw - 56px); }
+      .carousel-btn { width: 36px; height: 36px; }
     }
   </style>
   <link rel="stylesheet" href="timeline/timeline.css" />
@@ -403,11 +429,11 @@
       <section class="card hide" id="tab-fun">
 
         <h1>travel / photography</h1>
-        <div style="display:flex; align-items:center; gap:24px; margin-bottom:24px;">
-          <div style="flex:0 0 25%; max-width:25%;">
-            <img src="travel/flighty.PNG" alt="Flighty" style="width:100%; height:auto; display:block;" />
+        <div class="travel-intro">
+          <div class="travel-intro-img">
+            <img src="travel/flighty.PNG" alt="Flighty" />
           </div>
-          <div style="flex:1;">
+          <div class="travel-intro-text">
             <p>i love travelling and experiencing new places and things. here's my flighty since aug 2023... and here's my very specific bucketlist:</p>
             <ul style="margin: 12px 0; padding-left: 20px;">
               <li>hawaii</li>
@@ -468,27 +494,8 @@
             <div class="playlist-item">
               <div class="playlist-title">classical</div>
               <div class="playlist-description">70++ hours of classical because it is the best genre.</div>
-              <div class="spotify-embed" style="width:100%; display:flex; justify-content:center;">
-                <iframe
-                  data-testid="embed-iframe"
-                  style="
-                    border-radius: 12px;
-                    border: none;
-                    width: 100%;
-                    max-width: 340px;
-                    min-width: 220px;
-                    height: 352px;
-                    display: block;
-                    background: #141824;
-                    box-shadow: 0 2px 12px rgba(60,26,122,0.18);
-                  "
-                  src="https://open.spotify.com/embed/playlist/4T1fmjUip1HgdEmQdhwEeS?utm_source=generator"
-                  frameborder="0"
-                  allowfullscreen=""
-                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                  loading="lazy"
-                  title="Spotify Chill Vibes Playlist"
-                ></iframe>
+              <div class="spotify-embed">
+                <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/4T1fmjUip1HgdEmQdhwEeS?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Spotify Chill Vibes Playlist"></iframe>
               </div>
             </div>
             
@@ -670,28 +677,28 @@
         <h2>8.13 Experimental Physics</h2>
         <p>8.13 (also known as Junior Lab) is the big experimental physics class for physics majors at MIT. It is known to be pretty time-consuming, which I found to be true, but it was also really fun and I enjoyed doing experiments that involved touching stuff other than a keyboard. For fun, here are my lab reports.</p>
         <div class="projects" style="margin-top: 16px;">
-          <article class="project" style="grid-template-columns: 200px 1fr;">
-            <img src="projects/8.13_Expt1_Sun.png" alt="Experiment 1" class="project-image" style="width:200px; height:200px; object-fit:cover; flex-shrink:0;" />
+          <article class="project project-lab">
+            <img src="projects/8.13_Expt1_Sun.png" alt="Experiment 1" class="project-image" />
             <div class="project-content">
               <h3>Experiment 1: Measuring the temperature of the Sun at 21cm</h3>
               <div class="project-description">MIT has a big radio telescope on a roof, which I pointed at the Sun.</div>
-              <a href="projects/8.13_Expt1.pdf" target="_blank" rel="noopener" style="font-size:14px; margin-top:8px; display:inline-block;">View PDF</a>
+              <a href="projects/8.13_Expt1.pdf" target="_blank" rel="noopener" class="project-pdf">View PDF</a>
             </div>
           </article>
-          <article class="project" style="grid-template-columns: 200px 1fr;">
-            <img src="projects/8.13_Expt2_Setup.png" alt="Experiment 2" class="project-image" style="width:200px; height:200px; object-fit:cover; flex-shrink:0;" />
+          <article class="project project-lab">
+            <img src="projects/8.13_Expt2_Setup.png" alt="Experiment 2" class="project-image" />
             <div class="project-content">
               <h3>Experiment 2: Measuring the charge-to-mass ratio of the electron using relativistic dynamics</h3>
               <div class="project-description">We can investigate whether electrons from radioactive decay follow relativistic or classical dynamics by examining their momentum-velocity relationship. Spoiler: relativity is correct.</div>
-              <a href="projects/8.13_Expt2.pdf" target="_blank" rel="noopener" style="font-size:14px; margin-top:8px; display:inline-block;">View PDF</a>
+              <a href="projects/8.13_Expt2.pdf" target="_blank" rel="noopener" class="project-pdf">View PDF</a>
             </div>
           </article>
-          <article class="project" style="grid-template-columns: 200px 1fr;">
-            <img src="projects/8.13_Expt3_Muons.jpg" alt="Experiment 3" class="project-image" style="width:200px; height:200px; object-fit:cover; flex-shrink:0;" />
+          <article class="project project-lab">
+            <img src="projects/8.13_Expt3_Muons.jpg" alt="Experiment 3" class="project-image" />
             <div class="project-content">
               <h3>Experiment 3</h3>
               <div class="project-description">Muons (the particle not the optimizer) are created in the atmosphere by cosmic rays. Muon counts vary with altitude and latitude, so I brought the apparatus (CosmicWatch) with me on the plane to ICLR in Rio to measure this effect. I was a little stressed that TSA would stop me for having a mysterious duct-taped device with blinking lights but all went well. </div>
-              <a href="projects/8.13_Expt3.pdf" target="_blank" rel="noopener" style="font-size:14px; margin-top:8px; display:inline-block;">View PDF</a>
+              <a href="projects/8.13_Expt3.pdf" target="_blank" rel="noopener" class="project-pdf">View PDF</a>
             </div>
           </article>
         </div>
